@@ -1,4 +1,4 @@
-package com.co.ias.handyman.infraestructure.controllers;
+package com.co.ias.handyman.infraestructure.configurations;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

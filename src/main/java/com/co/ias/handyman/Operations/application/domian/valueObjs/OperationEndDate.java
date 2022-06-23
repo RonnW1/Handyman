@@ -1,15 +1,15 @@
 package com.co.ias.handyman.Operations.application.domian.valueObjs;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class OperationEndDate {
-    private final Date value;
+    private final LocalDate value;
 
-    public OperationEndDate(Date value) {
+    public OperationEndDate(LocalDate value) {
         this.value = value;
     }
 
-    public Date getValue() {
+    public LocalDate getValue() {
         return value;
     }
 
