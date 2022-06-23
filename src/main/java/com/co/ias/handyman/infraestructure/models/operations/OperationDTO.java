@@ -6,16 +6,26 @@ import com.co.ias.handyman.infraestructure.models.technicians.TechnicianDTO;
 import java.time.LocalDate;
 
 public class OperationDTO {
+    private Long id;
     private LocalDate startDate;
     private LocalDate endDate;
     private TechnicianDTO technician;
     private ServiceDTO service;
 
-    public OperationDTO(LocalDate startDate, LocalDate endDate, TechnicianDTO technician, ServiceDTO service) {
+    public OperationDTO(Long id, LocalDate startDate, LocalDate endDate, TechnicianDTO technician, ServiceDTO service) {
+        this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.technician = technician;
         this.service = service;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDate getStartDate() {

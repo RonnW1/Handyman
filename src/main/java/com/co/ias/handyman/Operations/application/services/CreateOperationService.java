@@ -22,6 +22,7 @@ public class CreateOperationService implements CreateOperationUseCase {
     @Override
     public OperationDTO execute(OperationDTO operationDTO) {
         Operation operation = new Operation(
+                null,
                 new OperationStartDate( operationDTO.getStartDate() ),
                 new OperationEndDate( operationDTO.getEndDate() ),
                 new OperationIdService( operationDTO.getService().getIdService() ),

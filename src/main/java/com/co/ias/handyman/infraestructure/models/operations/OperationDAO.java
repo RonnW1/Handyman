@@ -9,6 +9,9 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "Operations")
 public class OperationDAO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idOperation;
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDate startDate;
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
@@ -20,11 +23,20 @@ public class OperationDAO {
     @JoinColumn(name = "idService")
     private ServiceDAO idService;
 
-    public OperationDAO(LocalDate startDate, LocalDate endDate, TechnicianDAO idTechnician, ServiceDAO idService) {
+    public OperationDAO(Long idOperation, LocalDate startDate, LocalDate endDate, TechnicianDAO idTechnician, ServiceDAO idService) {
+        this.idOperation = idOperation;
         this.startDate = startDate;
         this.endDate = endDate;
         this.idTechnician = idTechnician;
         this.idService = idService;
+    }
+
+    public Long getIdOperation() {
+        return idOperation;
+    }
+
+    public void setIdOperation(Long idOperation) {
+        this.idOperation = idOperation;
     }
 
     public LocalDate getStartDate() {
