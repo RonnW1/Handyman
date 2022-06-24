@@ -5,14 +5,14 @@ import com.co.ias.handyman.services.application.domain.valueObjs.*;
 public class service {
     private final ServiceId id;
     private final ServiceDirection direction;
-    private final ServiceJornad jornad;
+    private final ServiceJornad journey;
     private final ServiceUser user;
     private final ServiceIdServiceTypes idServiceTypes;
 
-    public service(ServiceId id, ServiceDirection direction, ServiceJornad jornad, ServiceUser user, ServiceIdServiceTypes idServiceTypes) {
+    public service(ServiceId id, ServiceDirection direction, ServiceJornad journey, ServiceUser user, ServiceIdServiceTypes idServiceTypes) {
         this.id = id;
         this.direction = direction;
-        this.jornad = jornad;
+        this.journey = journey;
         this.user = user;
         this.idServiceTypes = idServiceTypes;
     }
@@ -25,8 +25,8 @@ public class service {
         return direction;
     }
 
-    public ServiceJornad getJornad() {
-        return jornad;
+    public ServiceJornad getJourney() {
+        return journey;
     }
 
     public ServiceUser getUser() {
@@ -42,7 +42,7 @@ public class service {
         return "service{" +
                 "id=" + id +
                 ", direction=" + direction +
-                ", jornad=" + jornad +
+                ", journey=" + journey +
                 ", user=" + user +
                 ", idServiceTypes=" + idServiceTypes +
                 '}';

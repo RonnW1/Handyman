@@ -6,7 +6,7 @@ import javax.lang.model.element.Name;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Services")
+@Table(name = "services")
 public class ServiceDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,19 +14,22 @@ public class ServiceDAO {
     @Column(length = 45, nullable = false)
     private String direction;
     @Column(length = 10, nullable = false)
-    private String jornad;
+    private String journey;
     @Column(nullable = false)
-    private Integer user;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idServiceType")
+    private Integer userNumber;
+    @ManyToOne
+    @JoinColumn(name = "id_service_type")
     private ServiceTypeDAO idServiceType;
 
-    public ServiceDAO(Long idService, String direction, String jornad, Integer user, ServiceTypeDAO idServiceType) {
+    public ServiceDAO(Long idService, String direction, String journey, Integer userNumber, ServiceTypeDAO idServiceType) {
         this.idService = idService;
         this.direction = direction;
-        this.jornad = jornad;
-        this.user = user;
+        this.journey = journey;
+        this.userNumber = userNumber;
         this.idServiceType = idServiceType;
+    }
+
+    public ServiceDAO() {
     }
 
     public Long getIdService() {
@@ -45,20 +48,20 @@ public class ServiceDAO {
         this.direction = direction;
     }
 
-    public String getJornad() {
-        return jornad;
+    public String getJourney() {
+        return journey;
     }
 
-    public void setJornad(String jornad) {
-        this.jornad = jornad;
+    public void setJourney(String journey) {
+        this.journey = journey;
     }
 
-    public Integer getUser() {
-        return user;
+    public Integer getUserNumber() {
+        return userNumber;
     }
 
-    public void setUser(Integer user) {
-        this.user = user;
+    public void setUserNumber(Integer userNumber) {
+        this.userNumber = userNumber;
     }
 
     public ServiceTypeDAO getIdServiceType() {

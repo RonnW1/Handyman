@@ -17,14 +17,17 @@ public class OperationDAO {
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDate endDate;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTechnician")
+    @JoinColumn(name = "id_technician")
     private TechnicianDAO idTechnician;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idService")
+    @JoinColumn(name = "id_service")
     private ServiceDAO idService;
 
-    public OperationDAO(Long idOperation, LocalDate startDate, LocalDate endDate, TechnicianDAO idTechnician, ServiceDAO idService) {
-        this.idOperation = idOperation;
+    public OperationDAO() {
+    }
+
+    public OperationDAO( LocalDate startDate, LocalDate endDate, TechnicianDAO idTechnician, ServiceDAO idService) {
+
         this.startDate = startDate;
         this.endDate = endDate;
         this.idTechnician = idTechnician;

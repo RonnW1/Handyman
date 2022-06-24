@@ -3,7 +3,7 @@ package com.co.ias.handyman.infraestructure.models.serviceType;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ServiceTypes")
+@Table(name = "service_types")
 public class ServiceTypeDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +14,9 @@ public class ServiceTypeDAO {
     public ServiceTypeDAO(Long idServiceType, String description) {
         this.idServiceType = idServiceType;
         this.description = description;
+    }
+
+    public ServiceTypeDAO() {
     }
 
     public Long getIdServiceType() {

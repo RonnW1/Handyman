@@ -3,21 +3,26 @@ package com.co.ias.handyman.infraestructure.models.operations;
 import com.co.ias.handyman.infraestructure.models.services.ServiceDTO;
 import com.co.ias.handyman.infraestructure.models.technicians.TechnicianDTO;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class OperationDTO {
+public class OperationDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private LocalDate startDate;
     private LocalDate endDate;
     private TechnicianDTO technician;
     private ServiceDTO service;
 
-    public OperationDTO(Long id, LocalDate startDate, LocalDate endDate, TechnicianDTO technician, ServiceDTO service) {
-        this.id = id;
+    public OperationDTO( LocalDate startDate, LocalDate endDate, TechnicianDTO technician, ServiceDTO service) {
+
         this.startDate = startDate;
         this.endDate = endDate;
         this.technician = technician;
         this.service = service;
+    }
+
+    public OperationDTO() {
     }
 
     public Long getId() {

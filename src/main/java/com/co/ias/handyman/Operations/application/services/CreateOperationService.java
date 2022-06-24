@@ -1,34 +1,33 @@
 package com.co.ias.handyman.Operations.application.services;
 
-import com.co.ias.handyman.Operations.application.domian.Operation;
-import com.co.ias.handyman.Operations.application.domian.valueObjs.OperationEndDate;
-import com.co.ias.handyman.Operations.application.domian.valueObjs.OperationIdService;
-import com.co.ias.handyman.Operations.application.domian.valueObjs.OperationIdTechnician;
-import com.co.ias.handyman.Operations.application.domian.valueObjs.OperationStartDate;
 import com.co.ias.handyman.Operations.application.ports.input.CreateOperationUseCase;
-import com.co.ias.handyman.Operations.application.ports.output.OperationRepository;
+import com.co.ias.handyman.infraestructure.adapters.output.PostgresSQLOperationRepository;
+import com.co.ias.handyman.infraestructure.models.operations.OperationDAO;
 import com.co.ias.handyman.infraestructure.models.operations.OperationDTO;
+import com.co.ias.handyman.infraestructure.models.services.ServiceDAO;
+import com.co.ias.handyman.infraestructure.models.technicians.TechnicianDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CreateOperationService implements CreateOperationUseCase {
 
-    private final OperationRepository operationRepository;
-
-    public CreateOperationService(OperationRepository operationRepository) {
-        this.operationRepository = operationRepository;
-    }
+    @Autowired
+    PostgresSQLOperationRepository postgresSQLServiceRepository;
 
     @Override
-    public OperationDTO execute(OperationDTO operationDTO) {
-        Operation operation = new Operation(
-                null,
-                new OperationStartDate( operationDTO.getStartDate() ),
-                new OperationEndDate( operationDTO.getEndDate() ),
-                new OperationIdService( operationDTO.getService().getIdService() ),
-                new OperationIdTechnician( operationDTO.getTechnician().getIdTechnician() )
-        );
-        operationRepository.store(operation);
-        return operationDTO;
+    public Void execute(OperationDTO operationDTO) {
+        TechnicianDAO technicianDAO = new TechnicianDAO();
+        technicianDAO.setIdTechnician(operationDTO.getTechnician().getIdTechnician());
+        ServiceDAO serviceDAO = new ServiceDAO();
+        serviceDAO.setIdService(operationDTO.getService().getIdService());
+        postgresSQLServiceRepository.save(
+                new OperationDAO(
+                        operationDTO.getStartDate(),
+                        operationDTO.getEndDate(),
+                        technicianDAO,
+                        serviceDAO));
+
+        return null;
     }
 }

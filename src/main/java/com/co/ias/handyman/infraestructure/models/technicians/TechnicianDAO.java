@@ -1,15 +1,18 @@
 package com.co.ias.handyman.infraestructure.models.technicians;
 
+import org.hibernate.annotations.Nationalized;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Technicians")
+@Table(name = "technicians")
 public class TechnicianDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTechnician;
     @Column(length = 45, nullable = false)
     private String documentType;
+    @Nationalized
     @Column(length = 15, nullable = false)
     private String documentNumber;
     @Column(length = 45, nullable = false)
@@ -20,6 +23,9 @@ public class TechnicianDAO {
         this.documentType = documentType;
         this.documentNumber = documentNumber;
         this.fullName = fullName;
+    }
+
+    public TechnicianDAO() {
     }
 
     public Long getIdTechnician() {

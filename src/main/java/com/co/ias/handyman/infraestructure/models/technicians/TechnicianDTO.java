@@ -1,8 +1,9 @@
 package com.co.ias.handyman.infraestructure.models.technicians;
 
-import javax.persistence.Column;
+import java.io.Serializable;
 
-public class TechnicianDTO {
+public class TechnicianDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long idTechnician;
     private String documentType;
     private String documentNumber;
@@ -13,6 +14,9 @@ public class TechnicianDTO {
         this.documentType = documentType;
         this.documentNumber = documentNumber;
         this.fullName = fullName;
+    }
+
+    public TechnicianDTO() {
     }
 
     public Long getIdTechnician() {

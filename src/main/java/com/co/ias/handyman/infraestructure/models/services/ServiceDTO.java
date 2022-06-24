@@ -2,19 +2,25 @@ package com.co.ias.handyman.infraestructure.models.services;
 
 import com.co.ias.handyman.infraestructure.models.serviceType.ServiceTypeDTO;
 
-public class ServiceDTO {
+import java.io.Serializable;
+
+public class ServiceDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long idService;
     private String direction;
-    private String jornad;
+    private String journey;
     private Integer user;
     private ServiceTypeDTO idServiceType;
 
-    public ServiceDTO(Long idService, String direction, String jornad, Integer user, ServiceTypeDTO idServiceType) {
+    public ServiceDTO(Long idService, String direction, String journey, Integer user, ServiceTypeDTO idServiceType) {
         this.idService = idService;
         this.direction = direction;
-        this.jornad = jornad;
+        this.journey = journey;
         this.user = user;
         this.idServiceType = idServiceType;
+    }
+
+    public ServiceDTO() {
     }
 
     public Long getIdService() {
@@ -33,12 +39,12 @@ public class ServiceDTO {
         this.direction = direction;
     }
 
-    public String getJornad() {
-        return jornad;
+    public String getJourney() {
+        return journey;
     }
 
-    public void setJornad(String jornad) {
-        this.jornad = jornad;
+    public void setJourney(String journey) {
+        this.journey = journey;
     }
 
     public Integer getUser() {
