@@ -2,19 +2,22 @@ package com.co.ias.handyman.infraestructure.models.operations;
 
 import com.co.ias.handyman.infraestructure.models.services.ServiceDTO;
 import com.co.ias.handyman.infraestructure.models.technicians.TechnicianDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class OperationDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
-    private LocalDate startDate;
-    private LocalDate endDate;
+
+    private LocalDateTime startDate;
+
+    private LocalDateTime endDate;
     private TechnicianDTO technician;
     private ServiceDTO service;
 
-    public OperationDTO( LocalDate startDate, LocalDate endDate, TechnicianDTO technician, ServiceDTO service) {
+    public OperationDTO( LocalDateTime startDate, LocalDateTime endDate, TechnicianDTO technician, ServiceDTO service) {
 
         this.startDate = startDate;
         this.endDate = endDate;
@@ -33,20 +36,28 @@ public class OperationDTO implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
+    }
+
+    public void setTechnician(TechnicianDTO technician) {
+        this.technician = technician;
+    }
+
+    public void setService(ServiceDTO service) {
+        this.service = service;
     }
 
     public TechnicianDTO getTechnician() {

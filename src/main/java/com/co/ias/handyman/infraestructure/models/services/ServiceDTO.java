@@ -1,6 +1,8 @@
 package com.co.ias.handyman.infraestructure.models.services;
 
 import com.co.ias.handyman.infraestructure.models.serviceType.ServiceTypeDTO;
+import com.co.ias.handyman.serviceTypes.application.domian.ServiceType;
+import com.co.ias.handyman.services.application.domain.Service;
 
 import java.io.Serializable;
 
@@ -23,6 +25,19 @@ public class ServiceDTO implements Serializable {
     public ServiceDTO() {
     }
 
+    public static ServiceDTO fromDomain(Service service){
+        ServiceTypeDTO serviceTypeDTO = new ServiceTypeDTO();
+        serviceTypeDTO.setIdServiceType(service.getIdServiceTypes().getValue().getId().getValue());
+        serviceTypeDTO.setDescription(service.getIdServiceTypes().getValue().getDescription().getValue());
+
+        ServiceDTO serviceDTO = new ServiceDTO();
+        serviceDTO.setIdService(service.getId().getValue());
+        serviceDTO.setDirection(service.getDirection().getValue());
+        serviceDTO.setJourney(service.getJourney().getValue());
+        serviceDTO.setUser(service.getUser().getValue());
+        serviceDTO.setIdServiceType(serviceTypeDTO);
+        return  serviceDTO;
+    }
     public Long getIdService() {
         return idService;
     }

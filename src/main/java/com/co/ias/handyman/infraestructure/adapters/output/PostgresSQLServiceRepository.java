@@ -1,9 +1,20 @@
 package com.co.ias.handyman.infraestructure.adapters.output;
 
-import com.co.ias.handyman.infraestructure.models.services.ServiceDAO;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.co.ias.handyman.infraestructure.adapters.output.jpa.ServiceJpaRepository;
+import com.co.ias.handyman.services.application.domain.Service;
+import com.co.ias.handyman.services.application.ports.output.ServiceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@Repository
-public interface PostgresSQLServiceRepository extends JpaRepository<ServiceDAO, Long> {
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Component
+public class PostgresSQLServiceRepository implements ServiceRepository {
+    @Autowired
+    private ServiceJpaRepository serviceJpaRepository;
+    @Override
+    public List<Service> getById(Long id) {
+        return serviceJpaRepository.findById(id).stream().map(serviceDAO -> serviceDAO.toDomain()).collect(Collectors.toList());
+    }
 }

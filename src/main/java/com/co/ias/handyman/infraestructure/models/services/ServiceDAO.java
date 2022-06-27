@@ -1,6 +1,11 @@
 package com.co.ias.handyman.infraestructure.models.services;
 
 import com.co.ias.handyman.infraestructure.models.serviceType.ServiceTypeDAO;
+import com.co.ias.handyman.serviceTypes.application.domian.ServiceType;
+import com.co.ias.handyman.serviceTypes.application.domian.valueObjs.ServiceDescription;
+import com.co.ias.handyman.serviceTypes.application.domian.valueObjs.ServiceTypeId;
+import com.co.ias.handyman.services.application.domain.Service;
+import com.co.ias.handyman.services.application.domain.valueObjs.*;
 
 import javax.lang.model.element.Name;
 import javax.persistence.*;
@@ -27,6 +32,19 @@ public class ServiceDAO {
         this.journey = journey;
         this.userNumber = userNumber;
         this.idServiceType = idServiceType;
+    }
+
+    public Service toDomain(){
+        ServiceType serviceType = new ServiceType(
+                new ServiceTypeId(idServiceType.getIdServiceType()),
+                new ServiceDescription(idServiceType.getDescription())
+        );
+        return new Service(
+                new ServiceId(idService),
+                new ServiceDirection(direction),
+                new ServiceJornad(journey),
+                new ServiceUser(userNumber),
+                new ServiceIdServiceTypes(serviceType));
     }
 
     public ServiceDAO() {
