@@ -1,15 +1,18 @@
 package com.co.ias.handyman.Operations.application.domian.valueObjs;
 
-import java.util.Date;
+import org.apache.commons.lang3.Validate;
+
+import java.time.LocalDate;
 
 public class OperationEndDate {
-    private final Date value;
+    private final LocalDate value;
 
-    public OperationEndDate(Date value) {
+    public OperationEndDate(LocalDate value) {
+        Validate.notNull(value, "End Date can not be null");
         this.value = value;
     }
 
-    public Date getValue() {
+    public LocalDate getValue() {
         return value;
     }
 
