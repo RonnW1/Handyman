@@ -1,6 +1,7 @@
 package com.co.ias.handyman.infraestructure.controllers;
 
 import com.co.ias.handyman.Operations.application.services.CreateOperationService;
+import com.co.ias.handyman.infraestructure.models.ApplicationError;
 import com.co.ias.handyman.infraestructure.models.operations.OperationDTO;
 import com.co.ias.handyman.infraestructure.models.serviceType.ServiceTypeDTO;
 import com.co.ias.handyman.infraestructure.models.services.ServiceDTO;
@@ -8,6 +9,7 @@ import com.co.ias.handyman.infraestructure.models.technicians.TechnicianDAO;
 import com.co.ias.handyman.infraestructure.models.technicians.TechnicianDTO;
 import com.co.ias.handyman.services.application.services.QueryAllById;
 import com.co.ias.handyman.technicians.application.ports.input.QueryByDocumentUseCase;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.DisplayName;
@@ -23,6 +25,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -65,6 +68,7 @@ public class OperationControllerTest {
 
     }
 
+
     @Test
     @DisplayName("getAllTechnicians")
     void getAllTechnicians() throws Exception {
@@ -79,4 +83,32 @@ public class OperationControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("getAllTechnicians fail")
+    void getAllTechniciansFail() throws Exception {
+        when(queryByDocumentUseCase.execute(null)).thenReturn(null);
+        ObjectMapper mapper = new ObjectMapper();
+
+        this.mockMvc.perform(post("/technicians/").contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(null)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    @DisplayName("Create operation incompleted")
+    void failCreateOperation() throws Exception {
+        OperationDTO operationDTO = null;
+        when(createOperation.execute(operationDTO)).thenReturn(operationDTO);
+        ObjectMapper mapper = new ObjectMapper();
+
+        //validation
+        this.mockMvc.perform(post("/operations").contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(operationDTO)))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
+
+    }
+
 }
