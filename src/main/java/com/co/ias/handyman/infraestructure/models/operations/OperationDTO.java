@@ -11,13 +11,13 @@ public class OperationDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
 
-    private LocalDateTime startDate;
+    private String startDate;
 
-    private LocalDateTime endDate;
+    private String endDate;
     private TechnicianDTO technician;
     private ServiceDTO service;
 
-    public OperationDTO( LocalDateTime startDate, LocalDateTime endDate, TechnicianDTO technician, ServiceDTO service) {
+    public OperationDTO( String startDate, String endDate, TechnicianDTO technician, ServiceDTO service) {
 
         this.startDate = startDate;
         this.endDate = endDate;
@@ -36,19 +36,19 @@ public class OperationDTO implements Serializable {
         this.id = id;
     }
 
-    public LocalDateTime getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
