@@ -17,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -62,5 +63,11 @@ public class PostgresSQLOperationRepositoryTest {
 
         assertNotNull(operationGet);
         assertEquals(operationDao.get().toDomain().getStartDate().toString(),operationGet.get().getStartDate().toString());
+    }
+
+    @Test
+    void GetAll(){
+        List<Operation> list = postgresSQLServiceRepository.getAll();
+        assertEquals(null,list);
     }
 }
