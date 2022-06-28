@@ -29,9 +29,9 @@ public class CreateOperationServiceTest {
     @Test
     @DisplayName("Create Operation Service")
     void craeteOperatioServiceTest(){
-
-        LocalDateTime startDate = LocalDateTime.of(2022, Month.JUNE, 20, 12,12,10);
-        LocalDateTime endDate = LocalDateTime.of(2022, Month.JUNE, 21, 13,12,11);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        LocalDateTime startDate = LocalDateTime.parse(LocalDateTime.now().format(formatter));
+        LocalDateTime endDate = LocalDateTime.parse(LocalDateTime.now().format(formatter));
         System.out.println(startDate);
         OperationDTO operationDTO = new OperationDTO(
                 startDate.toString(),
