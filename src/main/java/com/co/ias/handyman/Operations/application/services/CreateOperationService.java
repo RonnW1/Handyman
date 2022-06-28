@@ -24,7 +24,7 @@ public class CreateOperationService implements CreateOperationUseCase {
 
     @Override
     public OperationDTO execute(OperationDTO operationDTO) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         Optional<Operation> isOperationFound =
                 operationRepository.getOperationBetweenDate(LocalDateTime.parse(operationDTO.getStartDate(), formatter), operationDTO.getTechnician().getIdTechnician());
         if(isOperationFound.isPresent()){

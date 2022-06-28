@@ -14,6 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,8 +29,10 @@ public class CreateOperationServiceTest {
     @Test
     @DisplayName("Create Operation Service")
     void craeteOperatioServiceTest(){
-        LocalDateTime startDate = LocalDateTime.of(2022, Month.JUNE, 20, 12,12);
-        LocalDateTime endDate = LocalDateTime.of(2022, Month.JUNE, 21, 13,12);
+
+        LocalDateTime startDate = LocalDateTime.of(2022, Month.JUNE, 20, 12,12,10);
+        LocalDateTime endDate = LocalDateTime.of(2022, Month.JUNE, 21, 13,12,11);
+        System.out.println(startDate);
         OperationDTO operationDTO = new OperationDTO(
                 startDate.toString(),
                 endDate.toString(),
