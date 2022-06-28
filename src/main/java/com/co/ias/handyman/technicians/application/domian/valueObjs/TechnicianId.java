@@ -1,4 +1,4 @@
-package com.co.ias.handyman.technicians.domian.valueObjs;
+package com.co.ias.handyman.technicians.application.domian.valueObjs;
 
 public class TechnicianId {
     private final Long value;

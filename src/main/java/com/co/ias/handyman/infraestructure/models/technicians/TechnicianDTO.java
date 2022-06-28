@@ -1,5 +1,7 @@
 package com.co.ias.handyman.infraestructure.models.technicians;
 
+import com.co.ias.handyman.technicians.application.domian.Technician;
+
 import java.io.Serializable;
 
 public class TechnicianDTO implements Serializable {
@@ -14,6 +16,15 @@ public class TechnicianDTO implements Serializable {
         this.documentType = documentType;
         this.documentNumber = documentNumber;
         this.fullName = fullName;
+    }
+
+    public static TechnicianDTO fromDomain(Technician technician) {
+        TechnicianDTO technicianDTO = new TechnicianDTO();
+        technicianDTO.setIdTechnician(technician.getId().getValue());
+        technicianDTO.setDocumentNumber(technician.getDocumentNumber().getValue());
+        technicianDTO.setDocumentType(technician.getDocumentType().getValue());
+        technicianDTO.setFullName(technician.getFullName().getValue());
+        return technicianDTO;
     }
 
     public TechnicianDTO() {

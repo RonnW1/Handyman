@@ -2,14 +2,14 @@ package com.co.ias.handyman.services.application.domain;
 
 import com.co.ias.handyman.services.application.domain.valueObjs.*;
 
-public class service {
+public class Service {
     private final ServiceId id;
     private final ServiceDirection direction;
     private final ServiceJornad journey;
     private final ServiceUser user;
     private final ServiceIdServiceTypes idServiceTypes;
 
-    public service(ServiceId id, ServiceDirection direction, ServiceJornad journey, ServiceUser user, ServiceIdServiceTypes idServiceTypes) {
+    public Service(ServiceId id, ServiceDirection direction, ServiceJornad journey, ServiceUser user, ServiceIdServiceTypes idServiceTypes) {
         this.id = id;
         this.direction = direction;
         this.journey = journey;

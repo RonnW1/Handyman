@@ -1,9 +1,9 @@
-package com.co.ias.handyman.technicians.domian;
+package com.co.ias.handyman.technicians.application.domian;
 
-import com.co.ias.handyman.technicians.domian.valueObjs.TechnicianDocumentNumber;
-import com.co.ias.handyman.technicians.domian.valueObjs.TechnicianDocumentType;
-import com.co.ias.handyman.technicians.domian.valueObjs.TechnicianFullName;
-import com.co.ias.handyman.technicians.domian.valueObjs.TechnicianId;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianDocumentNumber;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianDocumentType;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianFullName;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianId;
 
 public class Technician {
     private final TechnicianId id;
