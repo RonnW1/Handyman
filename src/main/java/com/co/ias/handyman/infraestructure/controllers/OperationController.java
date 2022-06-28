@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class OperationController {
     private final CreateOperationUseCase createOperationUseCase;
     private final QueryByDocumentUseCase queryByDocumentUseCase;
