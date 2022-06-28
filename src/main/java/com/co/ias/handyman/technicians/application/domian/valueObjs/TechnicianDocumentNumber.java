@@ -1,4 +1,4 @@
-package com.co.ias.handyman.technicians.domian.valueObjs;
+package com.co.ias.handyman.technicians.application.domian.valueObjs;
 
 import org.apache.commons.lang3.Validate;
 

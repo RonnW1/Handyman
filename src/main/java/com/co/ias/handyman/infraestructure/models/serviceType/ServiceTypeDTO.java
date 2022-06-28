@@ -9,6 +9,9 @@ public class ServiceTypeDTO {
         this.description = description;
     }
 
+    public ServiceTypeDTO() {
+    }
+
     public Long getIdServiceType() {
         return idServiceType;
     }

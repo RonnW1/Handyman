@@ -1,5 +1,10 @@
 package com.co.ias.handyman.infraestructure.models.technicians;
 
+import com.co.ias.handyman.technicians.application.domian.Technician;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianDocumentNumber;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianDocumentType;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianFullName;
+import com.co.ias.handyman.technicians.application.domian.valueObjs.TechnicianId;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
@@ -26,6 +31,10 @@ public class TechnicianDAO {
     }
 
     public TechnicianDAO() {
+    }
+
+    public Technician toDomain(){
+        return new Technician(new TechnicianId(idTechnician), new TechnicianDocumentType(documentType), new TechnicianDocumentNumber(documentNumber), new TechnicianFullName(fullName));
     }
 
     public Long getIdTechnician() {
