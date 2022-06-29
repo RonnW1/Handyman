@@ -13,3 +13,6 @@ visual system that allows me to visualize and calculate the hours per service an
 ![](https://img.shields.io/badge/Spring%20Boot-2.7-blue?style=plastic&logo=SpringBoot)
 ![](https://img.shields.io/badge/Postgres-current-blue?style=plastic&logo=PostgreSQL)
 ![](https://img.shields.io/badge/Bootstrap-5.2.x-blue?style=plastic&logo=Bootstrap)
+
+## Development server
+Locate the docker file and run docker-compose up. navigate to http://localhost:8081/ to access the postsgres server
