@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -23,17 +24,19 @@ public class CreateOperationService implements CreateOperationUseCase {
 
     @Override
     public OperationDTO execute(OperationDTO operationDTO) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
         Optional<Operation> isOperationFound =
-                operationRepository.getOperationBetweenDate(LocalDateTime.parse(operationDTO.getStartDate()), operationDTO.getTechnician().getIdTechnician());
+                operationRepository.getOperationBetweenDate(LocalDateTime.parse(operationDTO.getStartDate(), formatter), operationDTO.getTechnician().getIdTechnician());
         if(isOperationFound.isPresent()){
             throw new IllegalArgumentException("the current technician has a service already assigned");
         }
-        if(LocalDateTime.parse(operationDTO.getEndDate()).isBefore(LocalDateTime.parse(operationDTO.getStartDate())))
+        if(LocalDateTime.parse(operationDTO.getEndDate(), formatter).isBefore(LocalDateTime.parse(operationDTO.getStartDate(), formatter))) {
             throw new IllegalArgumentException("the startDate can't be after of endDate");
+        }
         Operation operation = new Operation(
                 null,
-                new OperationStartDate(LocalDateTime.parse(operationDTO.getStartDate())),
-                new OperationEndDate(LocalDateTime.parse(operationDTO.getEndDate())),
+                new OperationStartDate(LocalDateTime.parse(operationDTO.getStartDate(), formatter)),
+                new OperationEndDate(LocalDateTime.parse(operationDTO.getEndDate(), formatter)),
                 new OperationIdService(operationDTO.getService().getIdService()),
                 new OperationIdTechnician(operationDTO.getTechnician().getIdTechnician())
         );

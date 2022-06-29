@@ -24,7 +24,7 @@ public class DatabaseConfiguration {
         HikariConfig hikariConfig = new HikariConfig();
 
         hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/technicalsupportdb?characterEncoding=UTF-8");
-        hikariConfig.setUsername("postgres");
+        hikariConfig.setUsername("admin");
         hikariConfig.setPassword("admin");
         return new HikariDataSource(hikariConfig);
     }
