@@ -29,13 +29,9 @@ public class CreateOperationServiceTest {
     @Test
     @DisplayName("Create Operation Service")
     void craeteOperatioServiceTest(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-        LocalDateTime startDate = LocalDateTime.parse(LocalDateTime.now().format(formatter));
-        LocalDateTime endDate = LocalDateTime.parse(LocalDateTime.now().format(formatter));
-        System.out.println(startDate);
         OperationDTO operationDTO = new OperationDTO(
-                startDate.toString(),
-                endDate.toString(),
+                "2022-06-28T09:02:07.000Z",
+                "2022-06-29T06:01:07.000Z",
                 new TechnicianDTO(1L,"CC","2123123","pedro"),
                 new ServiceDTO(1L, "Calle 10","noche",3,new ServiceTypeDTO(
                         1L,"Reparación"
